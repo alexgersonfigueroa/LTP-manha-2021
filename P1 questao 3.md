@@ -2,15 +2,16 @@
 
 int main() 
 {
-	int e_nro_A,e_nro_B;
-	printf("favor digitar valor 10 para primeiro numero:\t");
-	scanf("%i", &e_nro_A);
-	printf("favor digitar valor 20 para segundo numero:\t");
-	scanf("%i", &e_nro_B);
-	e_nro_A=e_nro_A*0+e_nro_B;
-	e_nro_B=e_nro_B-10;
+	int e_var_A,e_var_B,invert_var_A, invert_var_B;
+	printf("favor entrar com variavel A:\t");
+	scanf("%i", &e_var_A);
+	printf("favor entrar com variavel b:\t");
+	scanf("%i", &e_var_B);
 
-	printf("numeros impressos em ordem invertida: %d, %d",e_nro_A,e_nro_B);
-	    
+	invert_var_A = e_var_B;
+	invert_var_B = e_var_A;
+
+	printf("Resultado Programação: %i,%i,%i,%i",e_var_A,e_var_B,invert_var_A,invert_var_B);
+	
     return 0;
 }
