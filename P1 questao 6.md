@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <math.h>
 #include <conio.h>
+
+#define PI 3.14
+#define ALFA_AG 0.038
+#define ALFA_CU 0.039
+#define ALFA_AU 0.034
+#define ALFA_AL 0.039
+#define ALFA_TG 0.045
+#define RO_AG 1.59
+#define RO_CU 1.72
+#define RO_AU 2.44
+#define RO_AL 2.92
+#define RO_TG 5.6
+
 int main()
 {
 	int material_escolhido,temperatura_uso;
@@ -23,37 +36,45 @@ int main()
 	printf("Digite temperatura de uso do cabo (oC):\t");
 	scanf("%i", &temperatura_uso);
 			
-	if (material_escolhido == 1)
-		{calc_area = 3.141592654 * pow((diametro_cabo/2),2);
-		calc_ro = 0.00000159 * (1 + 0.038 * ( temperatura_uso - 20));
-		calc_resistividadeFio = (calc_ro*comprimento_cabo)/calc_area;
-		printf("Resistividade do fio de Prata: %f",calc_resistividadeFio);}
+	 
+	if ((material_escolhido > 0) && (material_escolhido < 6))
+	{switch (material_escolhido)
+	{case 1: calc_area = PI * pow((diametro_cabo/2),2);
+		calc_ro = (RO_AG *  (1 + ALFA_AG * ( temperatura_uso - 20)));
+		calc_resistividadeFio = ((calc_ro*comprimento_cabo)/calc_area);
+		printf("Resistividade do fio de Prata (micro Ohms): %.2f",calc_resistividadeFio);
+		break;
 	
+	case 2: calc_area = PI * pow((diametro_cabo/2),2);
+		calc_ro = (RO_CU *  (1 + ALFA_CU * ( temperatura_uso - 20)));
+		calc_resistividadeFio = ((calc_ro*comprimento_cabo)/calc_area);
+		printf("Resistividade do fio de Cobre (micro Ohms): %.2f",calc_resistividadeFio);
+		break;
+
+	case 3: calc_area = PI * pow((diametro_cabo/2),2);
+		calc_ro =( RO_AU *  (1 + ALFA_AU * ( temperatura_uso - 20)));
+		calc_resistividadeFio = ((calc_ro*comprimento_cabo)/calc_area);
+		printf("Resistividade do fio de Ouro (micro Ohms): %.2f",calc_resistividadeFio);
+		break;
+
+	case 4: calc_area = PI * pow((diametro_cabo/2),2);
+		calc_ro = (RO_AL *  (1 + ALFA_AL * ( temperatura_uso - 20)));
+		calc_resistividadeFio = ((calc_ro*comprimento_cabo)/calc_area);
+		printf("Resistividade do fio de Aluminio (micro Ohms): %.2f",calc_resistividadeFio);
+		break;
+
+	case 5: calc_area = PI * pow((diametro_cabo/2),2);
+		calc_ro =( RO_TG *  (1 + ALFA_TG * ( temperatura_uso - 20)));
+		calc_resistividadeFio = ((calc_ro*comprimento_cabo)/calc_area);
+		printf("Resistividade do fio de Tungstenio (micro Ohms): %.2f",calc_resistividadeFio);
+		break;}
+
 	
-	else
-	    {if (material_escolhido == 2)
-		{calc_area = 3.141592654*pow((diametro_cabo/2),2);
-		calc_ro = 0.00000172 * (1+ 0.039 * (temperatura_uso- 20));
-		calc_resistividadeFio = (calc_ro*comprimento_cabo)/calc_area;
-		printf("Resistividade do fio de Cobre: %f",calc_resistividadeFio);}
-	     else
-		    {if (material_escolhido == 3)
-		{calc_area = 3.141592654*pow((diametro_cabo/2),2);
-		calc_ro = 0.00000244 * (1+ 0.034 * (temperatura_uso- 20));
-		calc_resistividadeFio = (calc_ro*comprimento_cabo)/calc_area;
-		printf("Resistividade do fio de Ouro: %f",calc_resistividadeFio);}
-		    else
-		   	 {if (material_escolhido == 4)
-		{calc_area = 3.141592654*pow((diametro_cabo/2),2);
-		calc_ro = 0.00000292 * (1+ 0.039 * (temperatura_uso- 20));
-		calc_resistividadeFio = (calc_ro*comprimento_cabo)/calc_area;
-		printf("Resistividade do fio de Aluminio: %f",calc_resistividadeFio);}
-			  else
-		  	 	 {if (material_escolhido == 5)
-		{calc_area = 3.141592654*pow((diametro_cabo/2),2);
-		calc_ro = 0.0000056 * (1+ 0.045 * (temperatura_uso- 20));
-		calc_resistividadeFio = (calc_ro*comprimento_cabo)/calc_area;
-		printf("Resistividade do fio de Tungstenio: %f",calc_resistividadeFio);}}
-		   	 }}}
+		
+	}else{  printf("*******CODIGO MATERIAL INVALIDO*******");
+		}
+	    
+	
+		   	 		  	 	
     return 0;
 }
