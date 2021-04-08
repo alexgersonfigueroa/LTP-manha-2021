@@ -1,0 +1,34 @@
+#include <stdio.h> 
+
+
+int main()
+{
+	float resist_1,resist_2,resist_3,tensao_e;
+	float invers_r2,invers_r3,invers_geral,soma_invers,soma_serie,resist_equiv,calc_corrente,resultado_s;
+
+	
+	printf("Programa de SOMA EQUIVALENTE de RESISTORES E CORRENTE DA MALHHA ELETRICA\n");
+	printf("Entre com valor Resistor 1\t");
+	scanf("%f", &resist_1);
+	printf("Entre com valor Resistor 2\t");
+	scanf("%f", &resist_2);
+	printf("Entre com valor Resistor 3\t");
+	scanf("%f", &resist_3);
+	printf("Entre com valor Tensao Fonte\t");
+	scanf("%f", &tensao_e);
+		
+invers_r2 = (1 / resist_2);
+invers_r3 = (1 / resist_3);
+soma_invers = (invers_r2 + invers_r3);
+invers_geral = (1 / soma_invers);
+soma_serie = (invers_geral + resist_1);
+resist_equiv = soma_serie;
+printf("Resultado Resistencia Equivalente (em ohms): %.2f\n",resist_equiv);
+
+calc_corrente = (tensao_e + resist_equiv);
+printf("Resultado Calculo Corrente (em Amperes): %.2f\n",calc_corrente);
+
+
+	
+return 0;
+}
